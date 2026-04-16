@@ -1,0 +1,16 @@
+{
+  "name": "Your Ultimate Dinner Dojo",
+  "short_name": "Dinner Dojo",
+  "description": "Master the art of dinner decisions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFE4E1",
+  "theme_color": "#FFE4E1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
