@@ -11,7 +11,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install --include=dev
@@ -22,8 +22,10 @@ jobs:
       - name: Install Capacitor
         run: npm install --include=dev @capacitor/core @capacitor/cli @capacitor/android
 
-      - name: Sync Capacitor Android
-        run: npx cap add android || true && npx cap sync android
+      - name: Add and sync Android
+        run: |
+          npx cap add android || true
+          npx cap sync android
 
       - uses: actions/setup-java@v4
         with:
@@ -34,9 +36,11 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Build Debug APK
-        run: chmod +x android/gradlew && cd android && ./gradlew assembleDebug --no-daemon
+        run: |
+          chmod +x android/gradlew
+          cd android && ./gradlew assembleDebug --no-daemon
 
-      - name: Upload APK artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: dinner-dojo-apk
